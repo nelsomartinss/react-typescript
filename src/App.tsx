@@ -1,28 +1,33 @@
-import { useState } from "react";
+
+// criando propriedades para esse card
+interface ICardProps {
+  title: string;
+  children: React.ReactNode; // com isso podemos colocar elementos filhos dentro do card
+}
+
+// componente criado
+const Card = (props: ICardProps) => {
+  return (
+    <div style={{border:'1px solid red'}}>
+      <h2>{props.title}</h2>
+      <div>
+        {props.children} {/* essa div pode receber um filho agora */}
+      </div>
+      <div>
+        footer
+      </div>
+    </div>
+  )
+}
 
 export function App() {
   return (
     <>
       <h1>Olá!</h1>
+      <p>card:</p>
+      <Card title='testando'>
+        <p>Testando</p> {/* filhos */}
+      </Card>
     </>
   );
 }
-
-// função js
-const soma = () => {
-  return 2 + 2;
-};
-soma();
-
-// react hook
-const useSoma = () => {
-  const [soma] = useState(2 + 2);
-  return soma;
-};
-useSoma();
-
-// componente react funcional
-export function ComponenteFuncional() {
-  return <h2>Componente Funcional</h2>;
-}
-// componentes nativos do react usam letra minuscula, mas nome de componentes personalizados usam letra maiuscula e retornam html (jsx)
