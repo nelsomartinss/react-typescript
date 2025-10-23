@@ -1,33 +1,11 @@
-
-// criando propriedades para esse card
-interface ICardProps {
-  title: string;
-  children: React.ReactNode; // com isso podemos colocar elementos filhos dentro do card
-}
-
-// componente criado
-const Card = (props: ICardProps) => {
-  return (
-    <div style={{border:'1px solid red'}}>
-      <h2>{props.title}</h2>
-      <div>
-        {props.children} {/* essa div pode receber um filho agora */}
-      </div>
-      <div>
-        footer
-      </div>
-    </div>
-  )
-}
+import { useState } from "react";
 
 export function App() {
+  const [hide, setHide] = useState(false); // o valor de hide é falso, então enquanto hide for falso a mensagem que aparece é "Não clicou!". Se clicarmos o hide muda para true e a mensagem passa a ser "Clicou!"
   return (
     <>
-      <h1>Olá!</h1>
-      <p>card:</p>
-      <Card title='testando'>
-        <p>Testando</p> {/* filhos */}
-      </Card>
+      <button onClick={() => setHide(!hide)}>Clique aqui!</button>
+      {hide ? <p>Clicou!</p> : <p>Não clicou!</p>}
     </>
   );
 }
