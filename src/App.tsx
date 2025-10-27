@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { InputAdd } from "./components/ImputAdd";
 
 export function App() {
-  const [value, setValue] = useState("");
   const [list, setList] = useState([
     { id: "1", label: "fazer café", complete: false },
     { id: "2", label: "estudar react", complete: false },
@@ -10,22 +10,15 @@ export function App() {
 
   return (
     <div>
-      <input
-        type="text"
-        value={value} // o valor é o mesmo do setValue
-        onChange={(e) => setValue(e.target.value)} // se alterar o valor, a variavel 'e' guarda esse valor e passar para o setValue, ele adiciona ao setValue o valor do input (target). Evento que adiciona do input ao value
-      />
-      <button
-        onClick={() => {
+      <InputAdd
+        onAdd={(value) => 
           setList([
-            ...list, // o ... traz todo conteudo que ja existia na lista pra dentro do setList (novo array
-            { id: (list.length + 1).toString(), label: value, complete: false }, // o proximo item é o tamanho da lista +1 transformado em string, o label é o valor que estava no input
-          ]);
-          setValue(""); // limpa o input apos adicionar
-        }}
-      >
-        Adicionar
-      </button>
+            ...list,
+            { id: (list.length + 1).toString(), complete: false, label: value }, 
+          ]) // esse evento recebe o value do InputAdd
+        } // esse evento é a mesma coisa que um onClick do btn 
+      />
+
       {/* isso acontece quando clicamos nesse botão */}
       <ol>
         {list.map((listItem) => (
@@ -37,14 +30,14 @@ export function App() {
                 setList([
                   ...list.map((item) => ({
                     ...item,
-                    complete:
-                      item.id === listItem.id ? true : item.complete,
+                    complete: item.id === listItem.id ? true : item.complete,
                   })),
                 ])
               }
             >
               Concluir
-            </button> {/* o map percorre toda uma array, dentro desse map o item percorre toda a array e cria uma array que recebe todos os itens da array, todo item que tiver o mesmo id do listItem ele marca como true, se não tiver o mesmo id ele marca como false */}
+            </button>{" "}
+            {/* o map percorre toda uma array, dentro desse map o item percorre toda a array e cria uma array que recebe todos os itens da array, todo item que tiver o mesmo id do listItem ele marca como true, se não tiver o mesmo id ele marca como false */}
             <button
               onClick={() =>
                 setList([...list.filter((item) => item.id !== listItem.id)])
