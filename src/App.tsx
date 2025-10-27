@@ -1,52 +1,46 @@
 import { useState } from "react";
 import { InputAdd } from "./components/ImputAdd";
+import { TodoItem } from "./components/TodoItem";
 
 export function App() {
   const [list, setList] = useState([
-    { id: "1", label: "fazer café", complete: false },
-    { id: "2", label: "estudar react", complete: false },
-    { id: "3", label: "ir ao mercado", complete: false },
+    {id: '1', label: 'Estudar React', complete: false},
   ]);
+
   const handleAdd = (value: string) => {
     setList([
       ...list,
       { id: String(list.length + 1), label: value, complete: false },
     ]);
-  }
+  };
+
+  const handleDelete = (id: string) => {
+    setList([...list.filter((item) => item.id !== id)]);
+  }; // essa função filtra os itens que tem o mesmo id do item clicado em remover, ou seja, remove o item da lista, se o item for diferente do id clicado ele permanece na lista, mas isso não ocorre por que o item é removido, ou seja, é uma lista vazia
+
+  const handleFinish = (id: string) => {
+    setList(
+      list.map((item) =>
+        item.id === id ? { ...item, complete: true } : item
+      )
+    );
+  }; // essa função cria uma nova lista com o item atualizado quando clicado em concluir, ou seja, o que for true permanece true e o que for false vira true quando clicado no botão concluir
 
   return (
     <div>
-      <InputAdd onAdd={handleAdd}/> {/* passando função handleAdd dentro do InputAdd */}
+      <InputAdd onAdd={handleAdd} />
 
-      {/* isso acontece quando clicamos nesse botão */}
       <ol>
-        {list.map((listItem) => (
-          <li key={listItem.id}>
-            {listItem.label}
-            {listItem.complete ? " (concluído)" : ""}
-            <button
-              onClick={() =>
-                setList([
-                  ...list.map((item) => ({
-                    ...item,
-                    complete: item.id === listItem.id ? true : item.complete,
-                  })),
-                ])
-              }
-            >
-              Concluir
-            </button>{" "}
-            {/* o map percorre toda uma array, dentro desse map o item percorre toda a array e cria uma array que recebe todos os itens da array, todo item que tiver o mesmo id do listItem ele marca como true, se não tiver o mesmo id ele marca como false */}
-            <button
-              onClick={() =>
-                setList([...list.filter((item) => item.id !== listItem.id)])
-              }
-            >
-              Remover
-            </button>{" "}
-            {/* Esse botão cria uma nova array que recebe a lista inteira e filtra cada item, dentro tem uma condição, se o item que esse botão que está sendo clicado for diferente do item da lista não é removido, ou seja, o item sempre é igual por isso é removido, ele cria uma array apenas com os itens */}
-          </li>
-        ))}
+        {list.map((item) => (
+          <TodoItem
+            key={item.id}
+            id={item.id}
+            label={item.label}
+            complete={item.complete}
+            onDelete={handleDelete}
+            onFinish={handleFinish}
+          />
+        ))} {/* passandos as props */}
       </ol>
     </div>
   );
