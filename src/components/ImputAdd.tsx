@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 interface IInputAddProps {
-  onAdd(value: string): void; // evento
+  onAdd(value: string): void;
 }
 export const InputAdd = (props: IInputAddProps) => {
   const [value, setValue] = useState("");
