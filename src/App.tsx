@@ -7,17 +7,16 @@ export function App() {
     { id: "2", label: "estudar react", complete: false },
     { id: "3", label: "ir ao mercado", complete: false },
   ]);
+  const handleAdd = (value: string) => {
+    setList([
+      ...list,
+      { id: String(list.length + 1), label: value, complete: false },
+    ]);
+  }
 
   return (
     <div>
-      <InputAdd
-        onAdd={(value) => 
-          setList([
-            ...list,
-            { id: (list.length + 1).toString(), complete: false, label: value }, 
-          ]) // esse evento recebe o value do InputAdd
-        } // esse evento é a mesma coisa que um onClick do btn 
-      />
+      <InputAdd onAdd={handleAdd}/> {/* passando função handleAdd dentro do InputAdd */}
 
       {/* isso acontece quando clicamos nesse botão */}
       <ol>
