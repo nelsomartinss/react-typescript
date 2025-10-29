@@ -1,15 +1,50 @@
 import { createServer, Model } from "miragejs";
 
 createServer({
-  // configurando tudo que vai ter dentro do servidor
   models: {
-    todos: Model, // uma tabela no backend chamada todos
+    todo: Model,
+  },
+
+  seeds(server) {
+    server.create("todo", { id: "1", label: "Learn MirageJS", complete: true });
   },
 
   routes() {
-    this.namespace = "api"; // prefixo para todas as rotas
-    this.get("/todos", () => {
-      return [{ id: "1", label: "Estudar React", complete: true }];
-    }); // rotas que são usadas para simular uma requisição de GET, isso vai fazer o mirage.js interceptar todas as requisições feitas pelo navegador para /api/todos
+    this.namespace = "api";
+
+    this.get("/todos", (schema) => {
+      return schema.all("todo");
+    });
+
+    this.post("/todos", (schema, request) => {
+      const data = JSON.parse(request.requestBody);
+      return schema.create("todo", data);
+    });
+
+    this.put("/todos/:id", (schema, request) => {
+      const id = request.params.id;
+      const todo = schema.find("todo", id);
+
+      if (!todo) {
+        return { error: "Todo not found" };
+      }
+
+      const newData = JSON.parse(request.requestBody);
+      const updated = todo.update(newData);
+
+      return { success: true, todo: updated };
+    });
+
+    this.delete("/todos/:id", (schema, request) => {
+      const id = request.params.id;
+      const todo = schema.find("todo", id);
+
+      if (!todo) {
+        return { error: "Todo not found" };
+      }
+
+      todo.destroy();
+      return { success: true, deleted: todo };
+    });
   },
 });
