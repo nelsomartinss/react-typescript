@@ -1,8 +1,14 @@
-/* ===== Base do layout ===== */
+/* ===== Base do layout estilo terminal ===== */
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .layout-base {
-  font-family: 'Inter', sans-serif;
-  background-color: #F3F4F6; /* cinza claro */
-  color: #111827; /* texto principal */
+  font-family: 'Fira Code', monospace; 
+  background-color: #0F111A; 
+  color: #E5E5E5; 
   min-height: 100vh;
   padding: 2rem;
   display: flex;
@@ -20,27 +26,26 @@
 }
 
 .layout-header a {
-  color: #4F46E5; /* primário */
+  color: #22C55E;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .layout-header a:hover {
-  color: #6366F1; /* hover suave */
+  color: #86EFAC;
 }
 
-/* ===== Divisor ===== */
 .layout-divider {
   width: 100%;
   border: none;
-  border-top: 1px solid #E5E7EB; /* linha suave */
+  border-top: 1px solid #2D2F3A; 
   margin-bottom: 2rem;
 }
 
 /* ===== Container dos filhos (TodoList) ===== */
 .layout-base > *:not(.layout-header):not(.layout-divider) {
   width: 100%;
-  max-width: 500px; /* mantém centralizado e compacto */
+  max-width: 500px;
 }
 
 /* ===== Todo List geral ===== */
@@ -52,9 +57,9 @@
 
 /* ===== Todo Item ===== */
 .todo-item {
-  background-color: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 0.5rem;
+  background-color: #1E1F2F; 
+  border: 1px solid #2D2F3A;
+  border-radius: 0.25rem;
   padding: 0.75rem 1rem;
   display: flex;
   justify-content: space-between;
@@ -64,20 +69,18 @@
 
 .todo-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(50, 200, 150, 0.2);
 }
 
-/* Texto do item */
 .todo-item label {
   font-size: 1rem;
-  color: #111827;
+  color: #E5E5E5;
   cursor: pointer;
 }
 
-/* Tarefa concluída */
 .todo-item.completed label {
+  color: #6B7280; 
   text-decoration: line-through;
-  color: #6B7280; /* cinza médio */
 }
 
 /* Botões do item */
@@ -91,22 +94,20 @@
   transition: color 0.2s ease;
 }
 
-/* Botão concluir */
 .todo-item button.finish {
-  color: #16A34A; /* verde */
+  color: #22C55E; 
 }
 
 .todo-item button.finish:hover {
-  color: #22C55E; /* verde mais claro no hover */
+  color: #86EFAC;
 }
 
-/* Botão deletar */
 .todo-item button.delete {
-  color: #DC2626; /* vermelho */
+  color: #F87171; 
 }
 
 .todo-item button.delete:hover {
-  color: #F87171; /* vermelho claro */
+  color: #FCA5A5;
 }
 
 /* ===== Input Add ===== */
@@ -119,29 +120,31 @@
 .input-add input {
   flex: 1;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #E5E7EB;
-  border-radius: 0.5rem;
+  border: 1px solid #2D2F3A;
+  border-radius: 0.25rem;
   font-size: 1rem;
+  background-color: #1E1F2F;
+  color: #E5E5E5;
   outline: none;
   transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
 .input-add input:focus {
-  border-color: #6366F1;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  border-color: #22C55E;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
 }
 
 .input-add button {
   padding: 0.5rem 1rem;
-  background-color: #4F46E5;
-  color: #FFFFFF;
+  background-color: #22C55E;
+  color: #0F111A;
   font-weight: 600;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .input-add button:hover {
-  background-color: #6366F1;
+  background-color: #86EFAC;
 }
