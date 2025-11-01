@@ -1,0 +1,147 @@
+/* ===== Base do layout ===== */
+.layout-base {
+  font-family: 'Inter', sans-serif;
+  background-color: #F3F4F6; /* cinza claro */
+  color: #111827; /* texto principal */
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Header ===== */
+.layout-header {
+  display: flex;
+  gap: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.layout-header a {
+  color: #4F46E5; /* primário */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.layout-header a:hover {
+  color: #6366F1; /* hover suave */
+}
+
+/* ===== Divisor ===== */
+.layout-divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #E5E7EB; /* linha suave */
+  margin-bottom: 2rem;
+}
+
+/* ===== Container dos filhos (TodoList) ===== */
+.layout-base > *:not(.layout-header):not(.layout-divider) {
+  width: 100%;
+  max-width: 500px; /* mantém centralizado e compacto */
+}
+
+/* ===== Todo List geral ===== */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ===== Todo Item ===== */
+.todo-item {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Texto do item */
+.todo-item label {
+  font-size: 1rem;
+  color: #111827;
+  cursor: pointer;
+}
+
+/* Tarefa concluída */
+.todo-item.completed label {
+  text-decoration: line-through;
+  color: #6B7280; /* cinza médio */
+}
+
+/* Botões do item */
+.todo-item button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+/* Botão concluir */
+.todo-item button.finish {
+  color: #16A34A; /* verde */
+}
+
+.todo-item button.finish:hover {
+  color: #22C55E; /* verde mais claro no hover */
+}
+
+/* Botão deletar */
+.todo-item button.delete {
+  color: #DC2626; /* vermelho */
+}
+
+.todo-item button.delete:hover {
+  color: #F87171; /* vermelho claro */
+}
+
+/* ===== Input Add ===== */
+.input-add {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-add input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-add input:focus {
+  border-color: #6366F1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.input-add button {
+  padding: 0.5rem 1rem;
+  background-color: #4F46E5;
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.input-add button:hover {
+  background-color: #6366F1;
+}
