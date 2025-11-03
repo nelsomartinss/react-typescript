@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { InputAdd } from "../components/InputAdd/InputAdd";
-import { TodoItem } from "../components/TodoItem/TodoItem";
-import { List } from "../components/List/List";
-import { TodoAPI, type ITodo } from "../shared/services/api/TodoAPI";
-import { PageLayout } from "../shared/layout/page-layout/PageLayout";
+import { InputAdd } from "../../components/InputAdd/InputAdd";
+import { TodoItem } from "../../components/TodoItem/TodoItem";
+import { List } from "../../components/List/List";
+import { TodoAPI, type ITodo } from "../../shared/services/api/TodoAPI";
+import { PageLayout } from "../../shared/layout/page-layout/PageLayout";
 
 export const Home = () => {
   const [list, setList] = useState<ITodo[]>([]);
