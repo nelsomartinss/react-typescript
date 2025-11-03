@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 16px 0;
+}
+
+/* Input de texto moderno */
+.input {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 2px solid #d1d5db; 
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s ease;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+}
+
+.input:focus {
+  border-color: #2563eb; 
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+}
+
+/* Botão de ação */
+.button {
+  background-color: #16a34a; 
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.button:hover {
+  background-color: #15803d; 
+  box-shadow: 0 4px 8px rgba(22, 163, 74, 0.3);
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+/* Responsivo: mobile */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

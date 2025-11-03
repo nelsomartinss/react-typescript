@@ -1,150 +1,55 @@
-/* ===== Base do layout estilo terminal ===== */
-body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* Reset básico para consistência */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .layout-base {
-  font-family: 'Fira Code', monospace; 
-  background-color: #0F111A; 
-  color: #E5E5E5; 
-  min-height: 100vh;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f9fafc 0%, #eef2f7 100%);
+  color: #1e293b;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
 }
 
-/* ===== Header ===== */
+/* Cabeçalho fixo simples e agradável */
 .layout-header {
   display: flex;
-  gap: 2rem;
-  font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  background-color: #2563eb; 
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
+/* Links do header */
 .layout-header a {
-  color: #22C55E;
+  color: #fff;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: 0.2s ease;
+  font-size: 0.95rem;
+  padding: 6px 12px;
+  border-radius: 6px;
 }
 
 .layout-header a:hover {
-  color: #86EFAC;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Linha divisória sutil */
 .layout-divider {
-  width: 100%;
   border: none;
-  border-top: 1px solid #2D2F3A; 
-  margin-bottom: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 0;
 }
 
-/* ===== Container dos filhos (TodoList) ===== */
+/* Conteúdo da página */
 .layout-base > *:not(.layout-header):not(.layout-divider) {
-  width: 100%;
-  max-width: 500px;
-}
-
-/* ===== Todo List geral ===== */
-.todo-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-/* ===== Todo Item ===== */
-.todo-item {
-  background-color: #1E1F2F; 
-  border: 1px solid #2D2F3A;
-  border-radius: 0.25rem;
-  padding: 0.75rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-
-.todo-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(50, 200, 150, 0.2);
-}
-
-.todo-item label {
-  font-size: 1rem;
-  color: #E5E5E5;
-  cursor: pointer;
-}
-
-.todo-item.completed label {
-  color: #6B7280; 
-  text-decoration: line-through;
-}
-
-/* Botões do item */
-.todo-item button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  margin-left: 0.5rem;
-  font-size: 1rem;
-  padding: 0.25rem;
-  transition: color 0.2s ease;
-}
-
-.todo-item button.finish {
-  color: #22C55E; 
-}
-
-.todo-item button.finish:hover {
-  color: #86EFAC;
-}
-
-.todo-item button.delete {
-  color: #F87171; 
-}
-
-.todo-item button.delete:hover {
-  color: #FCA5A5;
-}
-
-/* ===== Input Add ===== */
-.input-add {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.input-add input {
   flex: 1;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #2D2F3A;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  background-color: #1E1F2F;
-  color: #E5E5E5;
-  outline: none;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-.input-add input:focus {
-  border-color: #22C55E;
-  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
-}
-
-.input-add button {
-  padding: 0.5rem 1rem;
-  background-color: #22C55E;
-  color: #0F111A;
-  font-weight: 600;
-  border-radius: 0.25rem;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.input-add button:hover {
-  background-color: #86EFAC;
+  padding: 32px 24px;
 }

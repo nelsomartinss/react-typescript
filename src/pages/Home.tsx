@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { InputAdd } from "../components/ImputAdd";
-import { TodoItem } from "../components/TodoItem";
-import { List } from "../components/List";
+import { InputAdd } from "../components/InputAdd/InputAdd";
+import { TodoItem } from "../components/TodoItem/TodoItem";
+import { List } from "../components/List/List";
 import { TodoAPI, type ITodo } from "../shared/services/api/TodoAPI";
+import { PageLayout } from "../shared/layout/page-layout/PageLayout";
 
 export const Home = () => {
   const [list, setList] = useState<ITodo[]>([]);
@@ -57,7 +58,7 @@ export const Home = () => {
   };
 
   return (
-    <div>
+    <PageLayout title="ToDo List">
       <InputAdd onAdd={handleAdd} />
 
       <List>
@@ -72,6 +73,6 @@ export const Home = () => {
           />
         ))}
       </List>
-    </div>
+    </PageLayout>
   );
 }

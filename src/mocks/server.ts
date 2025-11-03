@@ -5,7 +5,7 @@ createServer({
     todo: Model,
   },
 
- seeds(server) {
+  seeds(server) {
     const todosAsString = localStorage.getItem("MOCK_TODOS");
     if (!todosAsString) return;
 
@@ -25,8 +25,8 @@ createServer({
     this.post("/todos", (schema, request) => {
       const attrs = JSON.parse(request.requestBody);
 
-      const todo = schema.create("todo", attrs); // é necessário criar o todo antes de salvar no localStorage
-
+      const todo = schema.create("todo", attrs);
+      
       // Salvando no localStorage
       const todos = schema.all("todo").models.map((m) => m.attrs);
       localStorage.setItem("MOCK_TODOS", JSON.stringify(todos));
