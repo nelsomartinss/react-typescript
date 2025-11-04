@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router"; // ✅ Corrigido import
 import TodoItemStyles from "./TodoItem.module.css";
 
 interface ITodoItemProps {
@@ -8,6 +8,7 @@ interface ITodoItemProps {
   onDelete(id: string): void;
   onFinish(id: string, complete: boolean): void;
 }
+
 export const TodoItem = ({
   id,
   label,
@@ -26,13 +27,17 @@ export const TodoItem = ({
           {label}
         </span>
       </Link>
+
       <div className={TodoItemStyles.todoButtons}>
-        <button
-          className={`${TodoItemStyles.todoButton} ${TodoItemStyles.finish}`}
-          onClick={() => onFinish(id, complete)}
-        >
-          Concluir
-        </button>
+        {!complete && (
+          <button
+            className={`${TodoItemStyles.todoButton} ${TodoItemStyles.finish}`}
+            onClick={() => onFinish(id, complete)}
+          >
+            Concluir
+          </button>
+        )}
+
         <button
           className={`${TodoItemStyles.todoButton} ${TodoItemStyles.delete}`}
           onClick={() => onDelete(id)}
