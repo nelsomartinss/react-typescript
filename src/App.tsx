@@ -7,7 +7,7 @@ import { Home } from "./pages/Home/Home";
 
 export const App = () => {
   return (
-    <BrowserRouter basename="/toDoList">
+    <BrowserRouter>
       <AppLayout>
         <Routes>
           <Route path="/" element={<Home />} />
