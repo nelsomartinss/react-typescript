@@ -1,39 +1,36 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import LoginStyles from './Login.module.css';
-
+import LoginStyles from "./Login.module.css";
+import { useAuthContext } from "../../shared/contexts/AuthContext";
 
 export const Login = () => {
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-
+  const { login } = useAuthContext();
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleLogin = () => {
-    console.log('Entrar');
-  }
-
+    console.log("Entrar");
+    login(email, password);
+  };
 
   return (
     <div className={LoginStyles.PageContainer}>
       <div className={LoginStyles.PageContent}>
-        <h1>
-          Login
-        </h1>
-
+        <h1>Login</h1>
 
         <b>Email</b>
         <input
           value={email}
           className={LoginStyles.Input}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <b>Senha</b>
         <input
-          type='password'
+          type="password"
           value={password}
           className={LoginStyles.Input}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <br />
