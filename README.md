@@ -23,8 +23,8 @@ Para configurar e rodar o projeto localmente, siga os passos abaixo:
 1.  **Pré-requisitos:** Certifique-se de ter o Node.js (versão LTS recomendada) e o npm (ou yarn) instalados em sua máquina.
 2.  **Clonar o repositório:**
     ```bash
-    git clone https://github.com/seu-usuario/seu-repositorio.git # Substitua pelo link real do seu repositório
-    cd seu-repositorio # Substitua pelo nome da pasta do projeto
+    git clone https://github.com/nelsomartinss/toDoList.git 
+    cd todoList
     ```
 3.  **Instalar dependências:**
     ```bash
